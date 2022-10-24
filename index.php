@@ -1,21 +1,39 @@
-<?php
-session_start();
-?>
+<?php require 'inc/head.php'; ?>
 
 <?php require 'inc/data/products.php'; ?>
-<?php require 'inc/head.php'; ?>
+
+<?php
+if (!empty($_GET['add_to_cart'])) {
+    if (!empty($_SESSION['loginname'])) {
+        if ($_GET['add_to_cart'] != 0 && is_numeric($_GET['add_to_cart'])) {
+            $cookie_id = (int)trim(($_GET['add_to_cart']));
+
+            $_SESSION['cart'][] = $catalog[$cookie_id]['name'];
+
+            echo '<h3 style="background-color:green; color:white; font-weight:bold;"> 
+        You have successfully added the product to the cart 
+        </h3>';
+            header("Refresh:2; index.php");
+        }
+    }
+    else{
+        header('Location:login.php');
+    }
+}
+?>
+
+
 
 <?php
 if (!empty($_SESSION['loginname'])) {
     $user_name = $_SESSION['loginname'];
 ?>
-<h1>Welocome <?=$user_name;?></h1>
+    <h1>Welocome <?= $user_name; ?></h1>
 <?php
-}
-else{
+} else {
 ?>
-<h1>Welcome Wilder !</h1>
-<?php    
+    <h1>Welcome Wilder !</h1>
+<?php
 }
 ?>
 
@@ -38,5 +56,3 @@ else{
     </div>
 </section>
 <?php require 'inc/foot.php'; ?>
-
-

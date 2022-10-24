@@ -1,6 +1,6 @@
-<?php
-session_start();
+<?php require 'inc/head.php'; ?>
 
+<?php
 if(!empty($_POST['loginname'])){
     $loginname = htmlspecialchars(trim($_POST['loginname']));
 
@@ -15,8 +15,6 @@ if(!empty($_POST['loginname'])){
 }
 ?>
 
-
-<?php require 'inc/head.php'; ?>
 <div class="container" style="margin-top:40px">
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
@@ -41,13 +39,11 @@ if(!empty($_POST['loginname'])){
                                             <span class="input-group-addon">
                                               <i class="glyphicon glyphicon-user"></i>
                                             </span>
-                                            <!-- Need -->
                                             <input class="form-control" placeholder="Username" name="loginname"
                                                    type="text" autofocus requred>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <!-- Need -->
                                         <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign in">
                                     </div>
                                 </div>
