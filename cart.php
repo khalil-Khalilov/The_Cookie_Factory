@@ -1,3 +1,11 @@
+<?php
+session_start();
+?>
+
+<?php
+if(!empty($_SESSION['loginname'])){
+?>
+
 <?php require 'inc/head.php'; ?>
 <section class="cookies container-fluid">
     <div class="row">
@@ -5,3 +13,13 @@
     </div>
 </section>
 <?php require 'inc/foot.php'; ?>
+
+<?php
+}else{
+    header('Location:login.php');
+}
+?>
+
+
+
+

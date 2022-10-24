@@ -1,5 +1,24 @@
+<?php
+session_start();
+?>
+
 <?php require 'inc/data/products.php'; ?>
 <?php require 'inc/head.php'; ?>
+
+<?php
+if (!empty($_SESSION['loginname'])) {
+    $user_name = $_SESSION['loginname'];
+?>
+<h1>Welocome <?=$user_name;?></h1>
+<?php
+}
+else{
+?>
+<h1>Welcome Wilder !</h1>
+<?php    
+}
+?>
+
 <section class="cookies container-fluid">
     <div class="row">
         <?php foreach ($catalog as $id => $cookie) { ?>
@@ -19,3 +38,5 @@
     </div>
 </section>
 <?php require 'inc/foot.php'; ?>
+
+

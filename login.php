@@ -1,3 +1,21 @@
+<?php
+session_start();
+
+if(!empty($_POST['loginname'])){
+    $loginname = htmlspecialchars(trim($_POST['loginname']));
+
+    $_SESSION['loginname'] = $loginname;
+
+    if($_SESSION['loginname']){
+        header('Location: index.php');
+    }
+    else{
+        echo 'ERROR';
+    }
+}
+?>
+
+
 <?php require 'inc/head.php'; ?>
 <div class="container" style="margin-top:40px">
     <div class="row">
@@ -7,7 +25,7 @@
                     <strong> Sign in to continue</strong>
                 </div>
                 <div class="panel-body">
-                    <form role="form" action="#" method="POST">
+                    <form role="form" action="" method="POST">
                         <fieldset>
                             <div class="row">
                                 <div class="center-block">
@@ -23,11 +41,13 @@
                                             <span class="input-group-addon">
                                               <i class="glyphicon glyphicon-user"></i>
                                             </span>
+                                            <!-- Need -->
                                             <input class="form-control" placeholder="Username" name="loginname"
-                                                   type="text" autofocus>
+                                                   type="text" autofocus requred>
                                         </div>
                                     </div>
                                     <div class="form-group">
+                                        <!-- Need -->
                                         <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign in">
                                     </div>
                                 </div>
